@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#NextAuth  + Next.js  projesi
+Projeyi GitHub’dan çekip yerel veya Docker ortamında nasıl çalıştıracağınızı adım adım aşağıda açıklıyorum.
 
-## Getting Started
 
-First, run the development server:
+ 1->Depoyu Klonlayın
+ 2-> .env.prod dosyasını auth0 a giriş yapıp. Ordan aldığınız kendi giriş  bilgileriniz ile doldurun.
+ 
+    örnek içierik aşağıdaki gibidir.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    NEXTAUTH_URL=http://localhost:3000
+    NEXTAUTH_SECRET=your_nextauth_secret_here
+    AUTH0_CLIENT_ID=your_auth0_client_id
+    AUTH0_CLIENT_SECRET=your_auth0_client_secret
+    AUTH0_ISSUER=https://your-domain.auth0.com
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ 3-> terminalde npm install  ve ardından  npm run dev komutunu çalıştırın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ 4->http://localhost:3000 tarayıcıda bu adreste çalışacaktır.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ Docker ile çalıştırma
 
-## Learn More
+ 1-> .env.prod dosyasını yine kendi üstte belirttigim alanları doldurun.
 
-To learn more about Next.js, take a look at the following resources:
+ 2-> "docker-compose up --build -d" komutu ile  docker compose u ayağa kaldırın. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ 3->http://localhost:3000 tarayıcıda bu adreste çalışacaktır.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ 
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
