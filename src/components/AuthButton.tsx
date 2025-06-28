@@ -1,14 +1,19 @@
-// src/components/AuthButton.tsx
+
 "use client";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function AuthButton() {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   if (status === "loading") {
     return (
-      <button disabled className="px-4 py-2 bg-gray-500 text-white rounded">
+      <button
+        disabled
+        className="px-4 py-2 bg-gray-500 text-white rounded"
+      >
         Loading…
       </button>
     );
@@ -17,8 +22,12 @@ export default function AuthButton() {
   if (session) {
     return (
       <button
-        onClick={() => signOut({ callbackUrl: "/" })}
-        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+        onClick={() => {
+          if (confirm("Oturumu kapatmak istediğinize emin misiniz?")) {
+            signOut({ callbackUrl: "/" });
+          }
+        }}
+        className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded transition"
       >
         Sign Out
       </button>
@@ -27,8 +36,8 @@ export default function AuthButton() {
 
   return (
     <button
-      onClick={() => signIn(undefined, { callbackUrl: "/" })}
-      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      onClick={() => router.push("/login")}
+      className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition"
     >
       Sign In
     </button>

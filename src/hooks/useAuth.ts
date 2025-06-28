@@ -1,6 +1,4 @@
-// src/hooks/useAuth.ts
 "use client";
-
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export function useAuth() {
@@ -8,7 +6,7 @@ export function useAuth() {
   return {
     user:    session?.user,
     loading: status === "loading",
-    signIn:  () => signIn("auth0"),
+    signIn:  () => signIn("auth0", { callbackUrl: "/" }),
     signOut: () => signOut({ callbackUrl: "/" }),
   };
 }

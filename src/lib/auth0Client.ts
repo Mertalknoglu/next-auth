@@ -1,4 +1,4 @@
-// src/lib/auth0Client.ts
+
 import { ManagementClient } from "auth0";
 
 export const auth0Client = new ManagementClient({

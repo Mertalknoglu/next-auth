@@ -1,15 +1,17 @@
-// middleware.ts
+
 import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
 export default withAuth(
-  // (opsiyonel) burada custom logic koyabilirsiniz, ama biz sadece session varsa izin veriyoruz
-  null,
-  {
-    callbacks: {
-      // token varsa (yani oturum açıksa) izin ver, yoksa signin sayfasına yönlendir
-      authorized: ({ token }) => !!token,
-    },
-    // hangi yollar korunsun
-    matcher: ["/protected/:path*"],
+  async (req) => {
+    const token = req.nextauth.token;
+    if (!token) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+    return NextResponse.next();
   }
 );
+
+export const config = {
+  matcher: ["/protected/:path*"],
+};

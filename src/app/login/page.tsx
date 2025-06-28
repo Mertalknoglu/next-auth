@@ -1,4 +1,4 @@
-// src/app/login/page.tsx
+
 "use client";
 
 import { useState } from "react";
@@ -33,12 +33,11 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg space-y-6">
-        {/* Başlık */}
+      
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Sign In
         </h2>
 
-        {/* Auth0 Login */}
         <button
           onClick={handleAuth0SignIn}
           className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-md transition"
@@ -46,14 +45,12 @@ export default function LoginPage() {
           <span>Sign in with Auth0</span>
         </button>
 
-        {/* Separator */}
         <div className="flex items-center">
           <div className="flex-grow h-px bg-gray-300" />
           <span className="px-2 text-gray-500">or</span>
           <div className="flex-grow h-px bg-gray-300" />
         </div>
 
-        {/* Email/Password Form */}
         <form onSubmit={handleCredentialsSignIn} className="space-y-4">
           {error && (
             <p className="text-red-600 text-sm text-center">{error}</p>
